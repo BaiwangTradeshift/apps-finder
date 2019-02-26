@@ -18,6 +18,12 @@ export default [
         entryFile: 'package.json',
     },
     {
+        type: 'v4',
+        projectName: 'procurement-apps',
+        appBasePath: 'src/apps',
+        entryFile: 'package.json',
+    },
+    {
         type: 'v25',
         projectName: 'App-Service',
         appBasePath: 'src/main/resources',
