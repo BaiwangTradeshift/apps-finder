@@ -24,8 +24,10 @@ export default class V25Finder extends Finder{
                 // configFile:JSON.stringify(originalConfig),
                 app_id,
                 vendor_id,
-                appName: locales && this.getAppLocale(locales).app_name,
-                appDesc: locales && this.getAppLocale(locales).app_desc,
+                appNameEN: locales && this.getAppLocale(locales).appNameEN,
+                appDescEN: locales && this.getAppLocale(locales).appDescEN,
+                appNameCN: locales && this.getAppLocale(locales).appNameCN,
+                appDescCN: locales && this.getAppLocale(locales).appDescCN,
                 user_installable,
                 user_launchable,
                 isDefaultActive: DefaultActiveApps.getApps().includes(`${vendor_id}.${app_id}`)

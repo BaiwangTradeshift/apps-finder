@@ -26,8 +26,10 @@ export interface AppConfig {
     projectName: string;
     app_id: string;
     vendor_id: string;
-    appName: string;
-    appDesc: string;
+    appNameEN: string;
+    appDescEN: string;
+    appNameCN: string;
+    appDescCN: string;
     groups?: string;
     user_installable: boolean;
     user_launchable: boolean;
@@ -42,19 +44,26 @@ export default abstract class Finder extends BaseFinder {
     abstract getEntryApps(allApps: AppConfig[]): AppConfig[];
 
     getAppLocale(localesConfig: any):any {
-        let locale = null;
+        const localeCN = localesConfig['zh-CN'] || {};
         const localeKeys = Object.keys(localesConfig);
+        let localeEN = null;
         localeKeys.some(localeKey => {
             // because keys are en-gb or en-us
             if(localeKey.indexOf('en-') === 0) {
-                locale = localesConfig[localeKey];
+                localeEN = localesConfig[localeKey];
                 return true;
             }
             return false;
         });
-        if(locale === null){
-            locale = localesConfig[localeKeys[0]];
+        if(localeEN === null){
+            localeEN = localesConfig[localeKeys[0]];
         }
-        return locale;
+
+        return {
+            appNameEN: localeEN.app_name,
+            appDescEN: localeEN.app_desc,
+            appNameCN: localeCN.app_name,
+            appDescCN: localeCN.app_desc
+        };
     }
 }

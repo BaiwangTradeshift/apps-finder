@@ -5,18 +5,20 @@ const xlsx = require('node-xlsx').default;
 
 export default class DataWriter {
     static writeAsExcel(fileName: string, configs: AppConfig[]) {
-        const headers:string[] = ['projectType', 'projectName', 'vendor_id', 'app_id', 'appName', 'groups', 'user_installable', 'user_launchable', 'isDefaultActive', 'appDesc'];
+        const headers:string[] = ['projectType', 'projectName', 'vendor_id', 'app_id', 'appName en', 'appName cn', 'groups', 'user_installable', 'user_launchable', 'isDefaultActive', 'appDesc en', 'appDesc cn'];
         let data = configs.map((cfg: AppConfig) => [
             cfg.projectType,
             cfg.projectName,
             cfg.vendor_id,
             cfg.app_id,
-            cfg.appName,
+            cfg.appNameEN,
+            cfg.appNameCN,
             cfg.groups,
             cfg.user_installable,
             cfg.user_launchable,
             cfg.isDefaultActive,
-            cfg.appDesc
+            cfg.appDescEN,
+            cfg.appDescCN
         ]);
         data.splice(0,0, headers);
         // @ts-ignore
