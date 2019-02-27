@@ -44,7 +44,7 @@ export default abstract class Finder extends BaseFinder {
     abstract getEntryApps(allApps: AppConfig[]): AppConfig[];
 
     getAppLocale(localesConfig: any):any {
-        const localeCN = localesConfig['zh-CN'] || {};
+        const localeCN = localesConfig['zh-CN'] || localesConfig['zh-cn'] || {};
         const localeKeys = Object.keys(localesConfig);
         let localeEN = null;
         localeKeys.some(localeKey => {
